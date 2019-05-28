@@ -34,7 +34,7 @@ class WaypointUpdater(object):
         self.base_lane = None
         self.stopline_wp_idx = -1
         self.pose = None
-        self.base_waypoints = None
+        #self.base_waypoints = None
         self.waypoints_2d = None
         self.waypoints_tree = None
 
@@ -67,10 +67,10 @@ class WaypointUpdater(object):
             if self.pose and self.base_waypoints:
             #if self.pose and self.base_lane:
                 #Get closest waypoint
-                #closest_waypoint_idx = self.get_closest_waypoint_idx()
+                closest_waypoint_idx = self.get_closest_waypoint_idx()
                 #Publish closest way point index
-                #self.publish_waypoints(closest_waypoint_idx)
-                self.publish_waypoints()
+                self.publish_waypoints(closest_waypoint_idx)
+                #self.publish_waypoints()
             rate.sleep()
 
     def get_closest_waypoint_idx(self):
@@ -100,7 +100,7 @@ class WaypointUpdater(object):
             closest_idx = (closest_idx + 1) % len(self.waypoints_2d)
         return closest_idx
     
-    def publish_waypoints(self):
+    def publish_waypoints(self, closest_idx):
         #Create a new lane message
         #lane = Lane()
         #lane.header = self.base_waypoints.header
