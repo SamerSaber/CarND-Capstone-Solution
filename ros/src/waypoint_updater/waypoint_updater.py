@@ -70,7 +70,7 @@ class WaypointUpdater(object):
                 closest_waypoint_idx = self.get_closest_waypoint_idx()
                 #Publish closest way point index
                 self.publish_waypoints(closest_waypoint_idx)
-                self.publish_waypoints()
+                
             rate.sleep()
 
     def get_closest_waypoint_idx(self):
